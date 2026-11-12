@@ -14,7 +14,7 @@ window.SITE_CONFIG = {
   teacherCode: "DAVID2026",
   // Google 試算表後端（Apps Script 網頁應用程式網址，以 /exec 結尾）。
   // 部署 apps-script/Code.gs 後把網址貼在這裡。留空則紀錄只存在學生瀏覽器。
-  sheetUrl: "",
+  sheetUrl: "https://script.google.com/macros/s/AKfycbwoc4X_Ncj0rJ3cgYpgFUOeAXVIcPpMmq8gc6EdbFAaK0K0n_JSnBM_ycApqU8vCyxq/exec",
   // 點數規則
   pointsPerKey: 1,   // 每個「得分關鍵」寫對得 1 點
   perfectBonus: 3    // 一個單元的得分關鍵全部寫對，再加 3 點
