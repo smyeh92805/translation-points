@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>皇家大衛中譯英集點站</title>
+<link rel="icon" href="logo.png">
+<style>
+@font-face{font-family:KaiU;src:url("fonts/kaiu.ttf") format("truetype");font-display:swap}
+@font-face{font-family:TNR;src:url("fonts/times.ttf") format("truetype");font-display:swap}
+:root{--navy:#1f3f8f;--navy-d:#152c66;--gold:#d9a52a;--gold-l:#f3dca0;--orange:#f07a1c;--cream:#fbf7ee;--paper:#fff;--ink:#222;--muted:#6b6f7a;--line:#e3ddd0;--ok:#2e8b57;--bad:#c0392b;--shadow:0 6px 22px rgba(31,63,143,.10)}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Times New Roman",TNR,"標楷體",KaiU,serif;background:var(--cream);color:var(--ink);line-height:1.7;font-size:18px}
+.zh,[lang=zh]{font-family:"標楷體",KaiU,"Times New Roman",TNR,serif}
+h1,h2,h3{font-weight:700;line-height:1.3;margin:.2em 0}
+a{color:var(--navy)}
+button{font-family:inherit;font-size:1em;cursor:pointer}
+.hidden{display:none!important}
+.topbar{background:linear-gradient(90deg,var(--navy-d),var(--navy));color:#fff;border-bottom:4px solid var(--gold)}
+.topbar .in{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px}
+.topbar img{height:52px;width:auto}
+.topbar .t1{font-size:22px;font-weight:700;letter-spacing:1px}
+.topbar .t2{font-size:13px;opacity:.85;font-style:italic}
+.topbar .sp{flex:1}
+.topbar .user{font-size:15px;text-align:right;line-height:1.35}
+.topbar .user b{color:var(--gold-l)}
+.topbar button{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6);border-radius:8px;padding:5px 12px;font-size:14px}
+.topbar button:hover{background:rgba(255,255,255,.12)}
+.wrap{max-width:1080px;margin:0 auto;padding:22px 16px 60px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:22px 26px;margin-bottom:20px}
+.btn{background:var(--navy);color:#fff;border:0;border-radius:10px;padding:10px 22px;font-size:17px;font-weight:700;letter-spacing:.5px}
+.btn:hover{background:var(--navy-d)}
+.btn.ghost{background:#fff;color:var(--navy);border:1px solid var(--navy)}
+.btn.gold{background:var(--orange)}
+.btn:disabled{opacity:.5;cursor:default}
+.login{max-width:520px;margin:20px auto}
+.login .logo{display:block;margin:0 auto 6px;height:120px}
+.login h1{text-align:center;color:var(--navy);font-size:28px}
+.login .sub{text-align:center;color:var(--muted);font-size:16px;margin-bottom:14px}
+.field{margin:12px 0}
+.field label{display:block;font-weight:700;margin-bottom:4px;font-size:16px}
+.field input{width:100%;font-family:inherit;font-size:19px;padding:10px 12px;border:1px solid #c9c3b4;border-radius:10px}
+.field input:focus{outline:2px solid var(--gold)}
+.err{color:var(--bad);min-height:1.4em;font-size:15px}
+.howto{font-size:15px;color:#444;background:#fdf6e4;border-left:4px solid var(--gold);padding:10px 14px;border-radius:8px;margin-top:16px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.stat{background:linear-gradient(160deg,#fff,#f6f2e7);border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-align:center}
+.stat .n{font-size:38px;font-weight:700;color:var(--navy);line-height:1.1}
+.stat .l{font-size:15px;color:var(--muted)}
+.stat.pts .n{color:var(--orange)}
+.tabs{display:flex;gap:6px;margin:0 0 14px;flex-wrap:wrap}
+.tabs button{flex:1;min-width:120px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 6px;font-size:16px;color:var(--muted)}
+.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:700}
+.sec-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.sec-h h2{color:var(--navy);font-size:24px}
+.sec-h .note{color:var(--muted);font-size:15px}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px}
+.filters button{border:1px solid var(--gold);background:#fff7e0;border-radius:999px;padding:3px 14px;font-size:15px}
+.filters button.on{background:var(--gold);color:#fff;font-weight:700}
+.units{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.unit{display:block;text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;transition:.15s}
+.unit:hover{border-color:var(--navy);box-shadow:var(--shadow);transform:translateY(-1px)}
+.unit .u1{font-weight:700;color:var(--navy);font-size:17px}
+.unit .u2{font-size:14px;color:var(--muted)}
+.unit .u3{margin-top:6px;font-size:14px}
+.unit.done{background:#f3faf5;border-color:#9fd3b2}
+.unit .tag{display:inline-block;border-radius:999px;padding:0 10px;font-size:13px;background:#eef2fb;color:var(--navy);margin-right:4px}
+.unit.done .tag.ok{background:var(--ok);color:#fff}
+.unit-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.unit-head h1{font-size:28px;color:var(--navy);margin:0}
+.unit-head .zh{color:var(--muted);font-size:17px}
+.unit-head .sp{flex:1}
+.q{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0;background:#fff}
+.q .qt{font-weight:700;margin-bottom:8px;font-size:19px}
+.q .qt .n{display:inline-block;background:var(--navy);color:#fff;border-radius:6px;padding:0 8px;margin-right:8px;font-size:15px;vertical-align:2px}
+.q textarea{width:100%;min-height:80px;font-family:"Times New Roman",TNR,serif;font-size:19px;line-height:1.6;padding:8px 12px;border:1px solid #c9c3b4;border-radius:10px;resize:vertical}
+.q textarea:focus{outline:2px solid var(--gold)}
+.q.graded textarea{background:#faf8f2}
+.keys{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.keys span{border-radius:999px;padding:1px 12px;font-size:15px;border:1px solid var(--line)}
+.keys .k-ok{background:#e8f6ec;border-color:var(--ok);color:var(--ok)}
+.keys .k-ng{background:#fdecea;border-color:var(--bad);color:var(--bad)}
+.keys .k-hint{background:#fff7e0;border-color:var(--gold);color:#8a6512}
+.q .exp{margin-top:10px;padding:10px 14px;background:#fdf6e4;border-radius:8px;font-size:17px}
+.q .exp .ref{font-size:19px;color:var(--navy);font-weight:700}
+.q .exp .alt{color:#444}
+.q .mark{float:right;font-weight:700}
+.q .mark.ok{color:var(--ok)}
+.q .mark.ng{color:var(--bad)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.result{text-align:center;padding:16px;border-radius:12px;background:linear-gradient(160deg,#fff7e0,#fff);border:2px solid var(--gold)}
+.result .big{font-size:40px;font-weight:700;color:var(--orange)}
+table.tl{width:100%;border-collapse:collapse;font-size:16px}
+table.tl th,table.tl td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.tl th{color:var(--muted);font-weight:700}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--navy-d);color:#fff;padding:10px 20px;border-radius:999px;box-shadow:var(--shadow);font-size:16px;z-index:50}
+.muted{color:var(--muted)}
+.small{font-size:15px}
+@media (max-width:640px){
+  body{font-size:17px}
+  .topbar .t1{font-size:17px}
+  .topbar .t2{display:none}
+  .topbar img{height:40px}
+  .topbar .user{font-size:13px}
+  .card{padding:16px 14px}
+  .unit-head h1{font-size:23px}
+  .stat .n{font-size:30px}
+  .tabs button{min-width:46%}
+}
+@media print{
+  .topbar,.tabs,.actions,button,.keys,.toast{display:none!important}
+  body{background:#fff}
+  .card{box-shadow:none;border:0}
+  .q{break-inside:avoid}
+  .q textarea{border:0;border-bottom:1px solid #999;border-radius:0;min-height:90px}
+}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="in">
+  <img src="logo.png" alt="Royal David" onerror="this.onerror=null;this.src='https://smyeh92805.github.io/reading-points/logo.png'">
+  <div><div class="t1 zh" id="siteTitle">皇家大衛中譯英集點站</div><div class="t2">Royal David Translation Points · 學測／指考／聯考／GEPT</div></div>
+  <div class="sp"></div>
+  <div class="user zh hidden" id="userBox"></div>
+  <button class="zh hidden" id="btnHome">單元首頁</button>
+  <button class="zh hidden" id="btnLogout">登出</button>
+</div></header>
+<main class="wrap" id="app"></main>
+<script src="config.js"></script>
+<script src="items.js"></script>
+<script>
+"use strict";
+const CFG = window.SITE_CONFIG, ITEMS = window.TR_ITEMS;
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let session = null, view = {page:'login'}, store = {done:{}}, tab = 'jcee', filt = 'all';
+
+/* ===== 單元 ===== */
+const GROUPS = [
+  {key:'jcee', name:'歷屆大考', en:'JCEE', note:'學測・指考（83–115 年）'},
+  {key:'old',  name:'大學聯考', en:'Joint Entrance Exam', note:'73–90 年大學聯考'},
+  {key:'g1',   name:'GEPT 初級', en:'GEPT Elementary', note:'原創練習題・單句翻譯'},
+  {key:'g2',   name:'GEPT 中級', en:'GEPT Intermediate', note:'原創練習題・中譯英'},
+  {key:'g3',   name:'GEPT 中高級', en:'GEPT High-Intermediate', note:'原創練習題・進階句型'}
+];
+function buildUnits(){
+  const units = [], map = {};
+  ITEMS.forEach(it => {
+    let g, uid, title, sub;
+    if (/^G\d/.test(it.id)) {
+      const lv = it.id[1], n = parseInt(it.id.split('-')[1],10), k = Math.ceil(n/5);
+      g = 'g'+lv; uid = 'G'+lv+'-U'+k; title = it.label+' 第 '+k+' 單元'; sub = '第 '+((k-1)*5+1)+'–'+(k*5)+' 題';
+    } else {
+      g = it.label === '大學聯考' ? 'old' : 'jcee';
+      uid = 'Y'+it.year+'-'+it.label; title = it.year+' 年 '+it.label; sub = it.label;
+    }
+    if (!map[uid]) { map[uid] = {id:uid, group:g, title, sub, year:it.year, label:it.label, items:[]}; units.push(map[uid]); }
+    map[uid].items.push(it);
+  });
+  units.forEach(u => u.maxKeys = u.items.reduce((a,it)=>a+it.keys.length,0));
+  const GO = GROUPS.map(g=>g.key);
+  units.sort((a,b) => a.group!==b.group ? GO.indexOf(a.group)-GO.indexOf(b.group) : (a.group[0]==='g' ? a.id.localeCompare(b.id,undefined,{numeric:true}) : (b.year-a.year) || a.label.localeCompare(b.label,'zh-Hant')));
+  return units;
+}
+const UNITS = buildUnits();
+const unitById = id => UNITS.find(u => u.id === id);
+
+/* ===== 評分 ===== */
+function norm(s){
+  s = String(s||'').toLowerCase().replace(/[’‘`]/g,"'").replace(/[“”]/g,'"');
+  [["won't","will not"],["can't","cannot"],["shan't","shall not"],["n't"," not"],["'ll"," will"],["'ve"," have"],["'m"," am"],["'re"," are"],["'d better"," had better"]].forEach(([a,b])=>{ s = s.split(a).join(b); });
+  return s.replace(/\s+/g,' ').trim();
+}
+function gradeItem(it, ans){
+  const a = norm(ans);
+  const hits = it.keys.map(([name, rx]) => { try { return a.length>0 && new RegExp(rx).test(a); } catch(e){ return false; } });
+  return {hits, n: hits.filter(Boolean).length};
+}
+
+/* ===== 儲存 ===== */
+const LS = () => 'rdtr:'+session.code+':'+session.name;
+function load(){ try { store = JSON.parse(localStorage.getItem(LS())) || {done:{}}; } catch(e){ store = {done:{}}; } if(!store.done) store.done = {}; }
+function save(){ try { localStorage.setItem(LS(), JSON.stringify(store)); } catch(e){} }
+function totals(){
+  const d = Object.values(store.done);
+  const pts = d.reduce((a,r)=>a+r.points,0), got = d.reduce((a,r)=>a+r.score,0), max = d.reduce((a,r)=>a+r.max,0);
+  return {pts, units:d.length, qs:d.reduce((a,r)=>a+(r.qn||0),0), rate: max? Math.round(got*100/max):0};
+}
+
+/* ===== Google 試算表後端 ===== */
+function hasSheet(){ return !!(CFG.sheetUrl && /^https?:\/\//.test(CFG.sheetUrl)); }
+async function sheetGet(params){
+  const u = new URL(CFG.sheetUrl); Object.entries(params).forEach(([k,v])=>u.searchParams.set(k,v));
+  const r = await fetch(u.toString(), {method:'GET', redirect:'follow'}); const d = await r.json();
+  if (!d.ok) throw new Error(d.error||'後端錯誤'); return d;
+}
+async function sheetPost(rec){
+  if (!hasSheet()) return false;
+  try { const r = await fetch(CFG.sheetUrl, {method:'POST', redirect:'follow', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(rec)}); const d = await r.json(); return !!d.ok; } catch(e){ return false; }
+}
+async function syncFromSheet(){
+  if (!hasSheet() || !session) return;
+  try {
+    const d = await sheetGet({action:'student', name:session.name, code:session.code});
+    let changed = false;
+    (d.records||[]).forEach(r => { if (!store.done[r.unitId]) { store.done[r.unitId] = {score:+r.score, max:+r.max, points:+r.points, qn:+r.qn||0, time:r.time, answers:[]}; changed = true; } });
+    if (changed) { save(); if (view.page==='home') render(); }
+  } catch(e){}
+}
+
+/* ===== 畫面 ===== */
+function toast(msg){ const t = document.createElement('div'); t.className='toast zh'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(), 2600); }
+function go(v){ view = v; render(); window.scrollTo(0,0); }
+function render(){
+  const logged = !!session;
+  $('#userBox').classList.toggle('hidden', !logged);
+  $('#btnLogout').classList.toggle('hidden', !logged && view.page!=='teacher');
+  $('#btnHome').classList.toggle('hidden', !logged || view.page==='home');
+  if (logged) { const t = totals(); $('#userBox').innerHTML = esc(session.name)+'・'+esc(session.className)+'<br>點數 <b>'+t.pts+'</b>'; }
+  ({login:renderLogin, home:renderHome, unit:renderUnit, teacher:renderTeacher})[view.page]();
+}
+
+function renderLogin(){
+  $('#app').innerHTML = `
+  <div class="card login zh">
+    <img class="logo" src="logo.png" alt="Royal David" onerror="this.onerror=null;this.src='https://smyeh92805.github.io/reading-points/logo.png'">
+    <h1>${esc(CFG.siteName)}</h1>
+    <div class="sub">歷屆學測・指考・聯考＋全民英檢 GEPT 中譯英 · 寫對關鍵就能集點數</div>
+    <div class="field"><label>中文姓名</label><input id="inName" placeholder="請輸入你的中文姓名（例：王小明）" autocomplete="name"></div>
+    <div class="field"><label>班級代碼</label><input id="inCode" placeholder="老師給的班級代碼" autocomplete="off"></div>
+    <div class="err" id="loginErr"></div>
+    <div style="text-align:center"><button class="btn" id="btnLogin">登入開始練習</button></div>
+    <div class="howto"><b>怎麼玩？</b> 共 ${UNITS.length} 個單元、${ITEMS.length} 題：歷屆大考（學測、指考、聯考）＋ GEPT 初級／中級／中高級原創題。每題寫出英文翻譯後交卷，系統會檢查「得分關鍵」（重要單字與句型），寫對 1 個關鍵得 1 點，整個單元全對再加 ${CFG.perfectBonus} 點！每個單元第一次交卷才計分，之後可以再練習。</div>
+    <div class="howto">成績會自動上傳到老師的紀錄表，請每次都用同一個中文姓名登入。</div>
+  </div>`;
+  const go1 = () => login();
+  $('#btnLogin').onclick = go1;
+  ['#inName','#inCode'].forEach(s => $(s).addEventListener('keydown', e => { if (e.key==='Enter') go1(); }));
+}
+function login(){
+  const name = $('#inName').value.trim(), code = $('#inCode').value.trim().toUpperCase(), err = $('#loginErr');
+  if (code && code === String(CFG.teacherCode).toUpperCase()) { go({page:'teacher'}); return; }
+  if (!name) { err.textContent = '請輸入中文姓名'; return; }
+  const cls = CFG.classCodes[code] || CFG.classCodes[Object.keys(CFG.classCodes).find(k=>k.toUpperCase()===code)];
+  if (!cls) { err.textContent = '班級代碼不正確，請向老師確認'; return; }
+  session = {name, code, className: cls};
+  try { sessionStorage.setItem('rdtr:session', JSON.stringify(session)); } catch(e){}
+  load(); go({page:'home'}); toast('歡迎回來，'+name+'！'); syncFromSheet();
+}
+
+function renderHome(){
+  const t = totals(), g = GROUPS.find(x=>x.key===tab);
+  let list = UNITS.filter(u => u.group===tab);
+  if (tab==='jcee') {
+    if (filt==='學測') list = list.filter(u=>u.label==='學測');
+    else if (filt==='指考') list = list.filter(u=>u.label==='指考');
+    else if (filt==='其他') list = list.filter(u=>u.label!=='學測'&&u.label!=='指考');
+  }
+  const gDone = UNITS.filter(u=>u.group===tab && store.done[u.id]).length, gAll = UNITS.filter(u=>u.group===tab).length;
+  $('#app').innerHTML = `
+  <div class="card zh">
+    <div class="stats">
+      <div class="stat pts"><div class="n">${t.pts}</div><div class="l">累積點數</div></div>
+      <div class="stat"><div class="n">${t.units}</div><div class="l">完成單元 / ${UNITS.length}</div></div>
+      <div class="stat"><div class="n">${t.qs}</div><div class="l">已翻譯題數</div></div>
+      <div class="stat"><div class="n">${t.rate}%</div><div class="l">關鍵命中率</div></div>
+    </div>
+  </div>
+  <div class="card zh">
+    <div class="tabs">${GROUPS.map(x=>`<button data-tab="${x.key}" class="${x.key===tab?'on':''}">${x.name}</button>`).join('')}</div>
+    <div class="sec-h"><h2>${g.name}</h2><span class="note">${g.en} · ${g.note} · 已完成 ${gDone} / ${gAll} 單元</span></div>
+    ${tab==='jcee' ? `<div class="filters">${['all','學測','指考','其他'].map(f=>`<button data-f="${f}" class="${f===filt?'on':''}">${f==='all'?'全部':f==='其他'?'補考／研究用試卷':f}</button>`).join('')}</div>` : ''}
+    ${tab[0]==='g' ? `<div class="howto" style="margin:0 0 12px">GEPT 官方沒有公開歷屆考題，這裡是依各級程度原創的中譯英練習題，題目長度、單字與句型對應該級別。</div>` : ''}
+    <div class="units">${list.map(u => {
+      const r = store.done[u.id];
+      return `<button class="unit ${r?'done':''}" data-u="${u.id}">
+        <div class="u1">${esc(u.title)}</div>
+        <div class="u2">${u.items.length} 題 · 得分關鍵 ${u.maxKeys} 個</div>
+        <div class="u3">${r ? `<span class="tag ok">已完成</span><span class="tag">${r.score}/${r.max}・+${r.points} 點</span>` : `<span class="tag">未作答</span>`}</div>
+      </button>`; }).join('')}</div>
+  </div>`;
+  document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { tab = b.dataset.tab; filt='all'; render(); });
+  document.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { filt = b.dataset.f; render(); });
+  document.querySelectorAll('[data-u]').forEach(b => b.onclick = () => go({page:'unit', id:b.dataset.u, answers:{}, graded:false}));
+}
+
+function renderUnit(){
+  const u = unitById(view.id); if (!u) return go({page:'home'});
+  const prev = store.done[u.id];
+  const graded = view.graded;
+  const res = graded ? u.items.map((it,i)=>gradeItem(it, view.answers[i])) : null;
+  $('#app').innerHTML = `
+  <div class="card">
+    <div class="unit-head zh">
+      <div><h1>${esc(u.title)}</h1><div class="zh">${u.items.length} 題・把中文翻成英文，寫完按「交卷」</div></div>
+      <div class="sp"></div>
+      ${prev ? `<div class="tag" style="align-self:center">第一次成績 ${prev.score}/${prev.max}・+${prev.points} 點（再練習不重複計分）</div>`:''}
+    </div>
+    <div class="actions zh" style="margin-top:8px"><button class="btn ghost" id="btnPrint">🖨️ 列印成考卷</button><button class="btn ghost" id="btnBack">← 回單元首頁</button></div>
+    ${u.items.map((it,i)=>{
+      const r = res && res[i];
+      return `<div class="q ${graded?'graded':''}">
+        ${r ? `<span class="mark ${r.n===it.keys.length?'ok':'ng'} zh">${r.n} / ${it.keys.length}</span>`:''}
+        <div class="qt zh"><span class="n">${i+1}</span>${esc(it.zh)}</div>
+        <textarea data-i="${i}" placeholder="Type your English translation here..." ${graded?'readonly':''} spellcheck="false">${esc(view.answers[i]||'')}</textarea>
+        ${r ? `<div class="keys zh">${it.keys.map((k,j)=>`<span class="${r.hits[j]?'k-ok':'k-ng'}">${r.hits[j]?'✓':'✗'} ${esc(k[0])}</span>`).join('')}</div>
+        <div class="exp"><div class="ref">${esc(it.en)}</div>${it.alt.length?`<div class="alt"><span class="zh">其他譯法：</span>${it.alt.map(esc).join('<br>')}</div>`:''}<div class="zh small" style="margin-top:4px">💡 ${esc(it.tip)}</div></div>` :
+        `<div class="keys zh">${it.keys.map(k=>`<span class="k-hint">${esc(k[0])}</span>`).join('')}</div>`}
+      </div>`; }).join('')}
+    <div class="actions zh">
+      ${graded ? `<button class="btn" id="btnRetry">再練一次</button><button class="btn gold" id="btnNext">下一個單元 →</button>` : `<button class="btn" id="btnSubmit">交卷</button><span class="muted small">提示：灰色標籤是本題的得分關鍵（要翻出的重點）。</span>`}
+    </div>
+    <div id="resBox"></div>
+  </div>`;
+  document.querySelectorAll('textarea[data-i]').forEach(t => t.addEventListener('input', () => { view.answers[t.dataset.i] = t.value; }));
+  $('#btnBack').onclick = () => go({page:'home'});
+  $('#btnPrint').onclick = () => { try { window.print(); } catch(e){} };
+  if (!graded) $('#btnSubmit').onclick = () => submit(u);
+  else {
+    $('#btnRetry').onclick = () => go({page:'unit', id:u.id, answers:{}, graded:false});
+    const sameGroup = UNITS.filter(x=>x.group===u.group), k = sameGroup.indexOf(u), nx = sameGroup[k+1];
+    $('#btnNext').onclick = () => nx ? go({page:'unit', id:nx.id, answers:{}, graded:false}) : go({page:'home'});
+    if (!nx) $('#btnNext').textContent = '回單元首頁';
+    const score = res.reduce((a,r)=>a+r.n,0);
+    $('#resBox').innerHTML = `<div class="result zh" style="margin-top:16px"><div>本次命中得分關鍵</div><div class="big">${score} / ${u.maxKeys}</div>
+      <div>${view.earned!=null ? (view.earned>0 ? `這次獲得 <b>${view.earned}</b> 點${view.bonus?'（含全對獎勵 '+view.bonus+' 點）':''}！` : '這次沒有拿到點數，看看參考譯文再試一次！') : '這個單元已經計過分，這次是練習。'}</div>
+      <div class="muted small">系統只檢查得分關鍵；如果你用了不同但正確的說法，請拿給老師確認。</div></div>`;
+  }
+}
+async function submit(u){
+  const empty = u.items.map((_,i)=>i).filter(i => !(view.answers[i]||'').trim());
+  if (empty.length && !confirm('還有 '+empty.length+' 題沒寫（第 '+empty.map(i=>i+1).join('、')+' 題），確定要交卷嗎？')) return;
+  const res = u.items.map((it,i)=>gradeItem(it, view.answers[i]));
+  const score = res.reduce((a,r)=>a+r.n,0), max = u.maxKeys;
+  view.graded = true; view.earned = null; view.bonus = 0;
+  if (!store.done[u.id]) {
+    const bonus = score===max ? CFG.perfectBonus : 0, points = score*CFG.pointsPerKey + bonus;
+    const time = new Date().toLocaleString('sv-SE',{timeZone:'Asia/Taipei',hour12:false}).replace('T',' ').slice(0,19);
+    store.done[u.id] = {score, max, points, qn:u.items.length, time, answers:u.items.map((_,i)=>view.answers[i]||'')};
+    save(); view.earned = points; view.bonus = bonus;
+    if (score===max) toast('全部命中！額外獎勵 '+bonus+' 點 🎉');
+    sheetPost({action:'submit', name:session.name, code:session.code, className:session.className, unitId:u.id, unitTitle:u.title, score, max, points, bonus, qn:u.items.length, time,
+      answers:u.items.map((it,i)=>(i+1)+'. '+(view.answers[i]||'')).join('\n')}).then(ok => { if (hasSheet() && !ok) toast('成績暫存在本機，上傳失敗'); });
+  }
+  render(); setTimeout(()=>{ const r=$('#resBox'); if(r) r.scrollIntoView({behavior:'smooth'}); }, 50);
+}
+
+async function renderTeacher(){
+  $('#btnLogout').classList.remove('hidden');
+  $('#app').innerHTML = `<div class="card zh"><h2 style="color:var(--navy)">老師後台</h2><div id="tBody" class="muted">${hasSheet()?'讀取試算表中…':'尚未設定 sheetUrl（config.js），目前只能看到這台電腦上的紀錄。'}</div></div>`;
+  let rows = [];
+  if (hasSheet()) {
+    try { const d = await sheetGet({action:'all', key:CFG.teacherCode}); rows = d.records||[]; }
+    catch(e){ $('#tBody').textContent = '讀取失敗：'+e.message; return; }
+  } else {
+    for (let i=0;i<localStorage.length;i++){ const k = localStorage.key(i); if (!/^rdtr:/.test(k)) continue;
+      const [,code,name] = k.split(':'); let s; try { s = JSON.parse(localStorage.getItem(k)); } catch(e){ continue; }
+      Object.entries(s.done||{}).forEach(([uid,r]) => rows.push({name, code, unitId:uid, unitTitle:(unitById(uid)||{}).title||uid, score:r.score, max:r.max, points:r.points, time:r.time}));
+    }
+  }
+  const by = {};
+  rows.forEach(r => { const k = r.code+'|'+r.name; (by[k] = by[k] || {name:r.name, code:r.code, pts:0, n:0, last:''}); by[k].pts += +r.points; by[k].n++; if (String(r.time) > by[k].last) by[k].last = String(r.time); });
+  const stu = Object.values(by).sort((a,b)=>b.pts-a.pts);
+  $('#tBody').classList.remove('muted');
+  $('#tBody').innerHTML = stu.length ? `<table class="tl"><tr><th>#</th><th>姓名</th><th>班級</th><th>點數</th><th>完成單元</th><th>最後作答</th></tr>
+    ${stu.map((s,i)=>`<tr><td>${i+1}</td><td>${esc(s.name)}</td><td>${esc(CFG.classCodes[s.code]||s.code)}</td><td><b>${s.pts}</b></td><td>${s.n}</td><td>${esc(s.last)}</td></tr>`).join('')}</table>
+    <h3 style="margin-top:18px">最近作答</h3><table class="tl"><tr><th>時間</th><th>姓名</th><th>單元</th><th>得分</th><th>點數</th></tr>
+    ${rows.slice().sort((a,b)=>String(b.time).localeCompare(String(a.time))).slice(0,80).map(r=>`<tr><td>${esc(r.time)}</td><td>${esc(r.name)}</td><td>${esc(r.unitTitle)}</td><td>${r.score}/${r.max}</td><td>${r.points}</td></tr>`).join('')}</table>`
+    : '目前還沒有作答紀錄。';
+  if (rows.length) {
+    const b = document.createElement('button'); b.className = 'btn ghost'; b.textContent = '下載 CSV'; b.style.marginTop = '14px';
+    b.onclick = () => {
+      const lines = [['時間','姓名','班級','單元','命中關鍵','關鍵總數','點數']].concat(rows.map(r=>[r.time,r.name,CFG.classCodes[r.code]||r.code,r.unitTitle,r.score,r.max,r.points]));
+      const csv = '\ufeff' + lines.map(l=>l.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\r\n');
+      const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download = '中譯英集點站_紀錄.csv'; a.click();
+    };
+    $('#tBody').appendChild(b);
+  }
+}
+
+$('#btnLogout').onclick = () => { session = null; try { sessionStorage.removeItem('rdtr:session'); } catch(e){} go({page:'login'}); };
+$('#btnHome').onclick = () => go({page:'home'});
+try { const s = JSON.parse(sessionStorage.getItem('rdtr:session')); if (s && s.name) { session = s; load(); view = {page:'home'}; } } catch(e){}
+document.title = CFG.siteName; $('#siteTitle').textContent = CFG.siteName;
+render(); if (session) syncFromSheet();
+</script>
+</body>
+</html>
